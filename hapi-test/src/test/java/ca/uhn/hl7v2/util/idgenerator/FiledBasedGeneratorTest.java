@@ -2,6 +2,7 @@ package ca.uhn.hl7v2.util.idgenerator;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -47,7 +48,7 @@ public class FiledBasedGeneratorTest extends AbstractContinuousGeneratorTest<Fil
 	@Test
 	public void testReadFromUnknownFile() throws IOException {
 		FileBasedGenerator gen2 = new FileBasedGenerator();
-		File f = File.createTempFile("gentest", null);
+		File f = Files.createTempFile("gentest", null).toFile();
 		assertTrue(f.delete());
 		gen2.setDirectory(f.getParent());
 		gen2.setFileName(f.getName());
